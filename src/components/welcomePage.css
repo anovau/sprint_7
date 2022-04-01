@@ -1,0 +1,52 @@
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url("../../public/budget-blue.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+main:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+section {
+  text-align: center;
+  
+  background-color: white;
+  width: 750px;
+  height: 450px;
+  border-radius: 10px;
+  padding: 3rem 3rem 3rem 3rem;
+  font-family: "Montserrat", sans-serif;
+  position: absolute;
+}
+h1 {
+  font-size: 35px;
+  font-weight: 900;
+}
+h2 {
+  font-size: 18px;
+  margin-bottom: 2rem;
+}
+
+section button {
+  margin-top: 2rem;
+  width: 400px;
+  height: 40px;
+}
+section button:hover {
+  background-color: white;
+  color: #F77752;
+  border-style: solid;
+  border-color: #F77752;
+  border-width: 2px;
+}
