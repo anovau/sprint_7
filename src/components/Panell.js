@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import "./panell.css";
 import { useLocalStorage } from "../useLocalStorage";
+import info1 from "./info-1.png";
 
 // STYLE
 const StylePanell = styled.div`
   padding: 2rem 1rem 2rem 1rem;
-  width: 315px;
+  width: 350px;
   border: solid 3px;
   border-radius: 20px;
   margin-top: 1rem;
   font-size: 18px;
 `;
 
-function Panell({ pagesAndLanguages }) {
+function Panell({ pagesAndLanguages, openInfoPages, openInfoLanguages }) {
 
   // HOOKS
   const [pages, setPages] = useLocalStorage("pages", 1);
@@ -66,6 +67,7 @@ function Panell({ pagesAndLanguages }) {
           onChange={handleOnChangePages}
         />
         <button onClick={lessPages}>-</button>
+        <img onClick={openInfoPages} src={info1} alt="info"></img>
       </label>
       <br />
       <label>
@@ -79,6 +81,7 @@ function Panell({ pagesAndLanguages }) {
           onChange={handleOnChangeLanguages}
         />
         <button onClick={lessLanguages}>-</button>
+        <img onClick={openInfoLanguages} src={info1} alt="info"></img>
       </label>
     </StylePanell>
   );

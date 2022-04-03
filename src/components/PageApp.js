@@ -1,13 +1,15 @@
 import "./PageApp.css";
 import React, { useState, useEffect } from "react";
 import Panell from "./Panell";
-/* import { useLocalStorage } from "../useLocalStorage"; */
+import PopUp from "./PopUp";
 
 function PageApp() {
   // HOOKS
   const [budget, setBudget] = useState(0);
   const [budgetPanell, setBudgetPanell] = useState(0);
   const [checkedWeb, setCheckedWeb] = useState(false);
+  const [popUpPages, setPopUpPages] = useState(false)
+  const [popUpLanguages, setPopUpLanguages] = useState(false)
 
   useEffect(() => {
     setBudget(budget + budgetPanell);
@@ -39,6 +41,11 @@ function PageApp() {
     setBudget(budget - budgetPanell);
   };
 
+  const closePopUp = () => {
+    setPopUpPages(false);
+    setPopUpLanguages(false);
+  }
+
   return (
     <main>
       <card>
@@ -52,7 +59,7 @@ function PageApp() {
             />
             Una página web (500€)
           </label>
-          {checkedWeb ? <Panell pagesAndLanguages={addToBudgetPanell} /> : ""}
+          {checkedWeb ? <Panell pagesAndLanguages={addToBudgetPanell} openInfoPages={() => setPopUpPages(true)} openInfoLanguages={() =>setPopUpLanguages(true)} /> : ""}
           <br />
           <label>
             <input 
@@ -74,6 +81,8 @@ function PageApp() {
           <p>Precio: {budget}€</p>
         </form>
       </card>
+      {popUpPages ? <PopUp infoText="En este componente debe indicar el numero de páginas que tendrá su sitio web." closePopUp={closePopUp} />  : ""}
+      {popUpLanguages ? <PopUp infoText="En este componente debe indicar el numero de idiomas que tendrá su sitio web." closePopUp={closePopUp} /> : ""}
     </main>
   );
 }
